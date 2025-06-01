@@ -7,3 +7,4 @@ criar_tabela_usuario()
 criar_tabela_os()
 criar_tabela_tarefa()
 
+# aasdas
