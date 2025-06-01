@@ -1,6 +1,8 @@
-from pydantic import BaseModel
+from dataclasses import dataclass
+
+@dataclass
     
-class Ordemservico(BaseModel):
+class Ordemservico:
     id: int
     empregador: str
     avaliacao: float

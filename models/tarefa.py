@@ -1,6 +1,8 @@
-from pydantic import BaseModel
+from dataclasses import dataclass
 
-class Tarefa(BaseModel):    
+@dataclass
+
+class Tarefa:    
         id: int
         descricao: str
         empregador: str
