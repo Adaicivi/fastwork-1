@@ -9,4 +9,4 @@ class Usuario:
     senha: str
     telefone: str
     data_nascimento: str
-    habilidade: str
+    habilidades: str

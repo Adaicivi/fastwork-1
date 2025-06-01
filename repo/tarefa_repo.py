@@ -43,13 +43,24 @@ def editar_tarefa_valor_freelancer(id_tarefa, valor, freelancer):
     conexao.close()
 
 # Função para buscar uma tarefa pelo ID
-def buscar_tarefa_por_id(id_tarefa):
+def buscar_tarefa_por_id(id_tarefa : int) -> Tarefa:
     conexao = obter_conexao()
     cursor = conexao.cursor()
     cursor.execute(BUSCAR_TAREFA_POR_ID, (id_tarefa,))
     conexao.commit()
+    resultado = cursor.fetchone()
     conexao.close()
-    return cursor.fetchone()
+    if resultado:
+        return Tarefa(
+            id=resultado[0],
+            descricao=resultado[1],
+            empregador=resultado[2],
+            avaliacao=resultado[3],
+            endereco=resultado[4],
+            valor=resultado[5],
+            data=resultado[6],
+            status=resultado[7])
+    return None
 
 # Função para listar tarefas por empregador
 def listar_tarefas_por_empregador(empregador_id):

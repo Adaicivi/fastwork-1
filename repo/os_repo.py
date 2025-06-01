@@ -35,7 +35,7 @@ def inserir_os(empregador, avaliacao, freelancer, valor) -> Ordemservico:
     cursor = conexao.cursor()
     cursor.execute(
         INSERIR_OS,(empregador, avaliacao, freelancer, valor),)
-    connect.commit()
+    conexao.commit()
     conexao.close()
     return Ordemservico
 

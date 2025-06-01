@@ -22,7 +22,7 @@ LIMIT 20 OFFSET ?;
 
 # Comando para inserir uma nova tarefa
 INSERIR_TAREFA = """
-INSERT INTO tarefa (descricao, empregador, endereco, data, status)
+INSERT INTO tarefa (descricao, empregador, endereco, valor, data, status)
 VALUES (?, ?, ?, ?, ?, ?);
 """
 
