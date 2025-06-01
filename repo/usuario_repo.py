@@ -17,19 +17,21 @@ def inserir_usuario(usuario: Usuario) -> Usuario:
     """Insere um novo Usuario no banco de dados."""
     conexao = obter_conexao()
     cursor = conexao.cursor()
-    cursor.execute(INSERIR_USUARIO, 
-        (usuario.nome, usuario.cpf, usuario.telefone, usuario.email, usuario.data_nascimento))
+    cursor.execute(
+        INSERIR_USUARIO,
+        (usuario.nome, usuario.email, usuario.senha, usuario.telefone, usuario.data_nascimento, usuario.habilidades)
+    )
     usuario.id = cursor.lastrowid
     conexao.commit()
     conexao.close()
-    return Usuario
+    return usuario
 
 def editar_Usuario(usuario: Usuario) -> bool:
     """Atualiza um Usuario existente no banco de dados."""
     conexao = obter_conexao()
     cursor = conexao.cursor()
     cursor.execute(EDITAR_USUARIO, 
-        (usuario.nome, usuario.cpf, usuario.telefone, usuario.email, usuario.data_nascimento, usuario.id))
+        (usuario.nome, usuario.email, usuario.senha, usuario.telefone, usuario.data_nascimento, usuario.habilidades, usuario.id))
     conexao.commit()
     conexao.close()
     return (cursor.rowcount > 0)
@@ -43,8 +45,8 @@ def excluir_Usuario(id: int) -> bool:
     conexao.close()
     return (cursor.rowcount > 0)
 
-def obter_Usuario_por_nome(nome: str) -> Usuario:
-    """Obtém um Usuario pelo ID."""
+def obter_Usuario_por_nome(nome: str) -> Usuario | None:
+    """Obtém um Usuario pelo nome."""
     conexao = obter_conexao()
     cursor = conexao.cursor()
     cursor.execute(BUSCAR_USUARIO_POR_NOME, (nome,))
@@ -54,10 +56,12 @@ def obter_Usuario_por_nome(nome: str) -> Usuario:
         return Usuario(
             id=resultado[0],
             nome=resultado[1],
-            cpf=resultado[2],
-            telefone=resultado[3],
-            email=resultado[4],
-            data_nascimento=datetime.strptime(resultado[5], "%Y-%m-%d").date())
+            email=resultado[2],
+            senha=resultado[3],
+            telefone=resultado[4],
+            data_nascimento=resultado[5],
+            habilidades=resultado[6]
+        )
     return None
 
 def obter_usuarios_por_pagina(limite: int, offset: int) -> list[Usuario]:
@@ -70,8 +74,9 @@ def obter_usuarios_por_pagina(limite: int, offset: int) -> list[Usuario]:
     return [Usuario(
         id=resultado[0],
         nome=resultado[1],
-        cpf=resultado[2],
-        telefone=resultado[3],
-        email=resultado[4],
-        data_nascimento=datetime.strptime(resultado[5], "%Y-%m-%d").date())
-    for resultado in resultados]
+        email=resultado[2],
+        senha=resultado[3],
+        telefone=resultado[4],
+        data_nascimento=resultado[5],
+        habilidades=resultado[6]
+    ) for resultado in resultados]

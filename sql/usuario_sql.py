@@ -20,7 +20,7 @@ WHERE nome = ?;
 # Comando para inserir um novo usuário
 INSERIR_USUARIO = """
 INSERT INTO usuario (nome, email, senha, telefone, data_nascimento, habilidades)
-VALUES (?, ?, ?);
+VALUES (?, ?, ?, ?, ?, ?);
 """
 
 # Comando para listar usuários por habilidades
