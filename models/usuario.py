@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 
-class usuario:
+class Usuario:
     id: int
     nome: str
     email: str
