@@ -1,7 +1,8 @@
-class ordem_servico:
-    def __init__(self, id, empregador, avaliacao, freelancer, valor):
-        self.id = id
-        self.empregador = empregador
-        self.avaliacao = avaliacao
-        self.freelancer = freelancer
-        self.valor = valor
+from pydantic import BaseModel
+    
+class OrdemServico(BaseModel):
+    id: int
+    empregador: str
+    avaliacao: float
+    freelancer: str
+    valor: float  

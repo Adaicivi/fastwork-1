@@ -1,9 +1,11 @@
 import sqlite3
 from contextlib import closing
 from sql.tarefa_sql import *
+from dataclasses import dados
 
-# Caminho para o banco de dados SQLite
-DATABASE_PATH = "caminho_para_seu_banco_de_dados.db"
+
+DATABASE_PATH = dados.db
+
 
 # Função para criar a tabela de tarefas
 def criar_tabela_tarefa():

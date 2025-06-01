@@ -1,9 +1,10 @@
 import sqlite3
 from contextlib import closing
 from sql.usuario_sql import *
+from dataclasses import dados
 
-DATABASE_PATH = "caminho_para_seu_banco_de_dados.db"
 
+DATABASE_PATH = dados.db
 
 # Função para criar a tabela de usuários
 def criar_tabela_usuario():
