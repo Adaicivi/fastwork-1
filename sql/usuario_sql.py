@@ -41,3 +41,9 @@ UPDATE usuario
 SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, habilidade = ?
 WHERE id = ?;
 """
+
+#listar ususarios por paginação
+LISTAR_USUARIOS_POR_PAGINA = """
+SELECT * FROM usuario
+LIMIT ? OFFSET ?;
+"""

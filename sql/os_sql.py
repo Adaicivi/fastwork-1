@@ -12,8 +12,9 @@ CREATE TABLE IF NOT EXISTS ordem_servico (
 """
 
 # Comando para exibir todas as ordens de serviço
-EXIBIR_OS = """
-SELECT * FROM ordem_servico;
+EXIBIR_OS_POR_ID = """
+SELECT * FROM ordem_servico
+WHERE id = ?;
 """
 
 # Comando para inserir uma nova ordem de serviço
@@ -27,4 +28,18 @@ INSERIR_AVALIACAO = """
 UPDATE ordem_servico
 SET avaliacao = ?
 WHERE id = ?;
+"""
+
+# Comando para listar Os por paginação e empregador
+LISTAR_OS_POR_PAGINA_E = """
+SELECT * FROM ordem_servico
+WHERE empregador = ?
+LIMIT ? OFFSET ?;
+"""
+
+# Comando para listar os por paginação e freelancer
+LISTAR_OS_POR_PAGINA_F = """
+SELECT * FROM ordem_servico
+WHERE freelancer = ?
+LIMIT ? OFFSET ?;
 """

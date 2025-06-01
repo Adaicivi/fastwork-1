@@ -1,6 +1,6 @@
 from pydantic import BaseModel
     
-class OrdemServico(BaseModel):
+class Ordemservico(BaseModel):
     id: int
     empregador: str
     avaliacao: float
