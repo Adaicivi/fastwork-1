@@ -1,7 +1,7 @@
 from sqlite3 import *
 from sql.tarefa_sql import *
 from data.database import obter_conexao
-from models.tarefa import *
+from models.tarefa import Tarefa
 
 
 # Função para criar a tabela de tarefas

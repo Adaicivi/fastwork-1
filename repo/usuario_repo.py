@@ -1,6 +1,6 @@
 from sql.usuario_sql import *
 from data.database import obter_conexao
-from models.usuario import *
+from models.usuario import Usuario
 
 
 # Função para criar a tabela de usuários

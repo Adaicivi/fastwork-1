@@ -38,7 +38,7 @@ WHERE id = ?;
 # Comando para editar informações de um usuário
 EDITAR_USUARIO = """
 UPDATE usuario
-SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, habilidade = ?
+SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, habilidades = ?
 WHERE id = ?;
 """
 
